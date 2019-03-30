@@ -1,5 +1,5 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "MainWindow.h"
+#include "ui_MainWindow.h"
 #include "TMath.h"
 #include "TString.h"
 //#include <iostream>
@@ -7,7 +7,7 @@
 #include "TFile.h"
 #include "TTree.h"
 #include "TGraph.h"
-#include "qrootcanvas.h"
+#include "QRootCanvas.h"
 #include <QVBoxLayout>
 #include <TSystem.h>
 #include <QTimer>

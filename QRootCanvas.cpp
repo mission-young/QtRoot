@@ -1,4 +1,4 @@
-#include "qrootcanvas.h"
+#include "QRootCanvas.h"
 #include <QDebug>
 QRootCanvas::QRootCanvas(QWidget *parent) : QWidget(parent)
 {

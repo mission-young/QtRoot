@@ -14,10 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0">
-    <item>
-     <layout class="QVBoxLayout" name="vl_canvas"/>
-    </item>
+   <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0">
     <item>
      <widget class="QRootCanvas" name="canvas" native="true"/>
     </item>

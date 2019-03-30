@@ -26,15 +26,15 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
-    qrootcanvas.cpp
+    MainWindow.cpp \
+    QRootCanvas.cpp
 
 HEADERS += \
-        mainwindow.h \
-    qrootcanvas.h
+    MainWindow.h \
+    QRootCanvas.h
 
 FORMS += \
-        mainwindow.ui
+    MainWindow.ui
 
 
 

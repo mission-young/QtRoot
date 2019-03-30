@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "qrootcanvas.h"
+#include "QRootCanvas.h"
 namespace Ui {
 class MainWindow;
 }
