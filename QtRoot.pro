@@ -26,10 +26,12 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    qrootcanvas.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    qrootcanvas.h
 
 FORMS += \
         mainwindow.ui
@@ -37,9 +39,9 @@ FORMS += \
 
 
 INCLUDEPATH += \
-    /usr/local/opt/root6/include
+    $(ROOTSYS)/include
 LIBS += \
-    -L/usr/local/opt/root6/lib -lCore -lImt -lRIO -lNet -lHist -lGraf \
+    -L$(ROOTSYS)/lib -lCore -lImt -lRIO -lNet -lHist -lGraf \
     -lGraf3d -lGpad -lTree -lTreePlayer -lRint -lPostscript -lMatrix \
     -lPhysics -lMathCore -lThread -lMultiProc -pthread -lm -ldl -rdynamic
 

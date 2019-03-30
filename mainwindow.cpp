@@ -7,30 +7,51 @@
 #include "TFile.h"
 #include "TTree.h"
 #include "TGraph.h"
+#include "qrootcanvas.h"
+#include <QVBoxLayout>
+#include <TSystem.h>
+#include <QTimer>
+#include <TH1F.h>
+#include <TF1.h>
+#include <QDebug>
+#include <QWindow>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    //std::cout<<TString("hello");
-    TString s("nihao");
-    s.Append("hello");
-    s.Data();
     ui->setupUi(this);
-    ui->label->setText(QString::number(TMath::Pi()+Int_t(32),10,10)+s.Data());
-    TFile *f=new TFile("test.root","recreate");
+}
 
-    TTree *tree=new TTree("tree","tree");
-    TGraph *gg=new TGraph();
-    for (int i = 0; i < 100; ++i) {
-        gg->SetPoint(i,TMath::Sin(i),TMath::CosH(i));
+void MainWindow::changeEvent(QEvent *e)
+{
+    if(e->type() == QEvent::WindowStateChange){
+        QWindowStateChangeEvent *event = static_cast<QWindowStateChangeEvent *>(e);
+        if((event->oldState() & Qt::WindowMaximized)||
+                (event->oldState() & Qt::WindowMinimized)||
+                (event->oldState() & Qt::WindowNoState &&
+                 this->windowState() == Qt::WindowMaximized)){
+            if(ui->canvas->Canvas()){
+                ui->canvas->Canvas()->Resize();
+                ui->canvas->Canvas()->Update();
+            }
+        }
     }
-    gg->Write();
-    gg->Draw();
-    tree->Write();
-    f->Close();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+
+void MainWindow::on_btn_draw_clicked()
+{
+    static TH1F *h=new TH1F("h1f","TEST Random",200,0,10);
+    h->Reset();
+    h->SetFillStyle(3001);
+    TF1 *f=new TF1("sqroot","abs(sin(x)/x)",0,10);
+    h->FillRandom("sqroot",10000);
+    h->Draw();
+    ui->canvas->Canvas()->Modified();
+    ui->canvas->Canvas()->Update();
 }
